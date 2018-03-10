@@ -18,9 +18,17 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/cms', (req, res) => {
+router.get('/kids_page', (req, res) => {
   console.log('hit the cms route');
-  res.render('cmsForm', {
+  res.render('mainkids', {
+    cms : true,
+    mainpage : false
+  });
+});
+
+router.get('/parents_page', (req, res) => {
+  console.log('hit the cms route');
+  res.render('films', {
     cms : true,
     mainpage : false
   });
