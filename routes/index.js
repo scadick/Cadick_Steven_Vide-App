@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var config = require('../config');
+var connect = require('../utils/sqlConnect');
 
 // do some checking here => check the default user profile
 // ternary statement => MDN ternary
@@ -26,11 +27,21 @@ router.get('/kids_page', (req, res) => {
   });
 });
 
+
 router.get('/parents_page', (req, res) => {
-  console.log('hit the cms route');
-  res.render('films', {
-    cms : true,
-    mainpage : false
+  connect.query('SELECT * FROM videos', (err, result) => {
+    console.log('from selecting videos');
+    if (err) {
+      throw err; console.log(err);
+    } else {
+      console.log(result);
+
+     res.render('films', {
+         title: 'Parent Films',
+         message : "Welcome to the Adult Section",
+         filmData : result
+       });
+    }
   });
 });
 
