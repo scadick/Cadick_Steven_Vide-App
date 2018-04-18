@@ -6,12 +6,13 @@
 
 <ul>
   {{#each filmData}}
-  <video controls>
-        <source src="./videos/{{ video_name }}" type="videos/mp4">
-          <!--should load in the fallback sources here-->
-      </video>
+
     <li>
-      <img src="'/images/' + {{ video_name }}" type="videos/jpg" alt="Cover" />
+      <video controls autoplay>
+            <source src="/videos/{{ video_name }}.mp4" type="videos/mp4">
+              <!--should load in the fallback sources here-->
+          </video>
+      <img src="/images/{{ video_name }}.jpg" alt="Cover" />
       <h4>{{ video_name }}</h4>
       <p>{{ video_description }}</p>
     </li>
