@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     } else {
       console.log(result);
 
-     res.render('videos', {
+     res.render('movies', {
          title: 'Parent Films',
          message : "Welcome to the Adult Section",
          filmData : result

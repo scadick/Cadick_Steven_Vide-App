@@ -5,10 +5,17 @@
 <h1>{{ message }}</h1>
 
 <ul>
-  {{#each movieData}}
+  {{#each filmData}}
+  <video controls>
+        <source src="./videos/{{ video_name }}" type="videos/mp4">
+          <!--should load in the fallback sources here-->
+      </video>
     <li>
-      <h4>{{ viedo_name }}</h4>
+      <img src="'/images/' + {{ video_name }}" type="videos/jpg" alt="Cover" />
+      <h4>{{ video_name }}</h4>
       <p>{{ video_description }}</p>
     </li>
   {{/each}}
 </ul>
+
+<img src="images/footer-logo.png" alt="Footer Logo" id="footerlogo">

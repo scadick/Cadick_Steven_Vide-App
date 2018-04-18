@@ -4,7 +4,17 @@
 </p>
 
 <ul>
-  <li>
-    <a href="/getMovies" class="get-posts">get movies</a>
-  </li>
+  {{#each filmData}}
+  <video controls>
+        <source src="./videos/{{ video_name }}" type="video/mp4">
+          <!--should load in the fallback sources here-->
+      </video>
+    <li>
+      <img src="'/images/' + videos.video_name" alt="Cover" />
+      <h4>{{ video_name }}</h4>
+      <p>{{ video_description }}</p>
+    </li>
+  {{/each}}
 </ul>
+
+<img src="images/footer-logo.png" alt="Footer Logo" id="footerlogo">

@@ -4,16 +4,16 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  connect.query('SELECT * FROM videos', (err, result) => {
+  connect.query('SELECT * FROM videos WHERE tbl_age = 1', (err, result) => {
     if (err) {
       throw err; console.log(err);
     } else {
       console.log(result);
 
-      res.render('main_kids', {
+      res.render('mainkids', {
         title: 'Kids Movies',
         message : "Welcome to the kids page",
-        carData : result
+        filmData : result
       });
     }
   });

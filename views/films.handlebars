@@ -15,9 +15,15 @@
 
 <h1>{{ message }}</h1>
 
+<video controls>
+      <source src="video/{{ video_name }}" type="video/mp4">
+        <!--should load in the fallback sources here-->
+    </video>
+
 <ul>
   {{#each filmData}}
     <li>
+      <img src="{{ movie_name }}" type="images/jpg" alt="Cover" />
       <h4>{{ movie_name }}</h4>
       <p>{{ movie_description }}</p>
     </li>

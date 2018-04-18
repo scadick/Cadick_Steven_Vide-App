@@ -1,7 +1,7 @@
 var config = {
   user : "root",
-  password : "",
-  port: 3000,
+  password : "root",
+  port: 8889,
   host: "localhost",
   database: "video_app",
 }
