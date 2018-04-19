@@ -1,7 +1,9 @@
+<a href="/">
+  <i class="fa-fa-home"></i>
+</a>
+<img src="images/roku.svg" alt="Roku Logo" class="logo">
+
 <h1>{{ message }}</h1>
-<p>
-  Welcome to the children's page
-</p>
 
 <ul>
   {{#each filmData}}
@@ -11,11 +13,11 @@
             <source src="/videos/{{ video_name }}.mp4" type="videos/mp4">
               <!--should load in the fallback sources here-->
           </video>
-      <img src="/images/{{ video_name }}.jpg" alt="Cover" />
+      <img class="covers" src="/images/{{ video_name }}.jpg" alt="Cover" />
       <h4>{{ video_name }}</h4>
-      <p>{{ video_description }}</p>
+      <p class="vidDescription">{{ video_description }}</p>
     </li>
   {{/each}}
 </ul>
 
-<img src="images/footer-logo.png" alt="Footer Logo" id="footerlogo">
+<img src="images/footer-logo.png" alt="Footer Logo" class="footerlogo">
