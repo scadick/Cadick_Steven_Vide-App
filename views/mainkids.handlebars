@@ -7,12 +7,12 @@
   {{#each filmData}}
 
     <li>
+      <h1>{{ video_name }}</h1>
       <video controls autoplay>
             <source src="/videos/{{ video_name }}.mp4" type="videos/mp4">
               <!--should load in the fallback sources here-->
           </video>
       <img class="covers" src="/images/{{ video_name }}.jpg" alt="Cover" />
-      <h4>{{ video_name }}</h4>
       <p class="vidDescription">{{ video_description }}</p>
     </li>
   {{/each}}
