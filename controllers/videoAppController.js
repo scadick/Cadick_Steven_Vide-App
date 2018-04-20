@@ -63,7 +63,7 @@ exports.get_one_movie = (req, res) => {
         if (err) {
             return console.log(err.message)
         }
-        let query = `SELECT * FROM tbl_comments WHERE comments_movie = "${req.params.id}"`
+        let query = `SELECT * FROM tbl_comments c, tbl_movies m WHERE comments_movie = "${req.params.id}" AND movies_id = "${req.params.id}"`
 
         connect.query(query, (err, rows)=>{
             connection.release();
@@ -90,9 +90,11 @@ exports.post_new_review = (req, res) => {
         connect.query(query, (err, rows)=>{
             if (err) {
                 return console.log(err.message)
-            }
+            } else {
 
-            res.json(rows)
+            res.json(rows);
+
+            }
 
         })
 }
