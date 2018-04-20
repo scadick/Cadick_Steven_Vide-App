@@ -35,4 +35,8 @@ footer img{
 footer img:hover {
   filter: none;
 }
+
+a{
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */
