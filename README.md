@@ -9,7 +9,7 @@ Then navigate to your localhost:3000
 * Make sure to change your config file to your specifications
 * Make sure your database is named correctly and in the correct folder structure
 * Database named db_movies_new
-* Then inport the videos.sql
+* Then import the videos.sql
 * Download videos folder *
  https://drive.google.com/open?id=1l-oWC4sAeCOs_Ar9jWVkpRYesq7uOTlK *
  and import folder to public folder
