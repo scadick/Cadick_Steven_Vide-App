@@ -10,6 +10,6 @@ Starts on tehe Adults page, then in top right is where Kids section will be. Thi
 * Make sure your database is named correctly and in the correct folder structure
 * Database named db_movies_new
 * Then inport the videos.sql
-* Download videos folder 
-* https://drive.google.com/open?id=1l-oWC4sAeCOs_Ar9jWVkpRYesq7uOTlK
-* and import folder to public folder
+* Download videos folder *
+ https://drive.google.com/open?id=1l-oWC4sAeCOs_Ar9jWVkpRYesq7uOTlK *
+ and import folder to public folder
