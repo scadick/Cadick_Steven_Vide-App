@@ -3,7 +3,9 @@ var config = {
   password : "root",
   port: 8889,
   host: "localhost",
-  database: "video_app",
+  database: "db_movies_new",
 }
+
+
 
 module.exports = config;

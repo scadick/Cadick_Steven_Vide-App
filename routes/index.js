@@ -1,29 +1,17 @@
 var express = require('express');
+var videoAppController = require('../controllers/videoAppController');
 var router = express.Router();
-var config = require('../config');
-
-// do some checking here => check the default user profile
-// ternary statement => MDN ternary
-var toRender = (config.kidsmode) ? 'mainkids' : 'home';
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render(toRender, {
-    title: 'Roku',
-    message : "Welcome to the Roku Video App",
-    message2 : "Please Select an Age Group",
-    mainpage : true,
-    cms : false,
-    kidsmode : config.kidsmode
-  });
-});
+router.get('/', videoAppController.get_all_movies);
 
-router.get('/cms', (req, res) => {
-  console.log('hit the cms route');
-  res.render('cmsForm', {
-    cms : true,
-    mainpage : false
-  });
-});
+router.get('/main', videoAppController.get_all_movies);
+
+router.get('/mainkids', videoAppController.get_kids_movies);
+
+// COMMENTS
+router.get('/movies/:id/:movie', videoAppController.get_one_movie );
+//
+router.post('/api', videoAppController.post_new_review);
 
 module.exports = router;

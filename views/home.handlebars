@@ -1,33 +1,43 @@
-<img src="images/roku.svg" alt="Roku Logo" class="logo">
-<header>
-  <h1>{{ message }}</h1>
-</header>
-
-<section id="greetings">
-  <div class="media">
-    <img src="images/movie.jpg" alt="couple watching a movie" class="mediaTabs">
-    <h2 class="mediaHeads">Movies</h2>
-  </div>
-  <div class="media">
-    <img src="images/tv.jpg" alt="couple watching a movie" class="mediaTabs">
-    <h2 class="mediaHeads">Television</h2>
-  </div>
+<section class="greetings">
 <div class="media">
-  <img src="images/music.jpg" alt="couple watching a movie" class="mediaTabs">
-  <h2 class="mediaHeads">Music</h2>
+  <img src="images/movie.jpg" alt="couple watching a movie" class="mediaTabs">
+  <h2 class="mediaHeads">Movies</h2>
+</div>
+<div class="media">
+  <img src="images/tv.jpg" alt="couple watching a movie" class="mediaTabs">
+  <h2 class="mediaHeads">Television</h2>
+</div>
+<div class="media">
+<img src="images/music.jpg" alt="couple watching a movie" class="mediaTabs">
+<h2 class="mediaHeads">Music</h2>
 </div>
 </section>
 
-<section id="mainTabs">
-<ul>
-  <li>
-    <a href="/getFilms" class="get-posts ageGroup">Adults</a>
-  </li>
-  <li>
-    <a href="/getKidsFilms" class="get-one ageGroup">Kids</a>
-  </li>
-</ul>
-<h3>{{ message2 }}</h3>
-</section>
+<section id="app">
+    <div class="movie-wrapper">
+      <aside>
+        <h4 class="movie-title">{{ defaultMovie.movies_title }}</h4>
+        <span class="movie-year">
+          {{defaultMovie.movies_year}} &nbsp;&bull;&nbsp; {{defaultMovie.movies_runtime}}
+        </span>
+        <i class="movie-genre">{{defaultMovie.genre_name}}</i>
+      </aside>
+      <video autoplay controls>
+        <source src="video/{{ defaultMovie.movies_trailer }}">
+      </video>
+    </div>
 
-<img src="images/footer-logo.png" alt="Footer Logo" class="footerlogo">
+    <!-- Load in all of the thumbnails for each genre -->
+    <section class="genre-lists" v-for="genre in genres">
+      <div v-if="genre.movies.length > 0">
+        <div class="genre-item">
+          <h6 class="genre-name">${genre.name}</h6>
+          <div class="movie-list" v-for="movie in genre.movies">
+            <a :href="'/movies/' + movie.movies_id + '/' + movie.movies_trailer">
+              <img class="movie-thumb" :src="'/images/' + movie.movies_cover" :alt="movie.movies_title">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+</section>

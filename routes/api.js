@@ -1,66 +1,20 @@
-var express = require('express');
-var connect = require('../utils/sqlConnect');
-var bodyParser = require('body-parser');
-var router = express.Router();
-
-// middleware goes here... it's in the middle of the process -> after the request, before the response
+// var express = require('express');
+// var connect = require('../utils/sqlConnect');
+// var bodyParser = require('body-parser');
+// var router = express.Router();
 //
-// parse the request, make sure we can convert incoming data into something Express can use
-router.use(bodyParser.urlencoded({ extended : false }));
-router.use(bodyParser.json());
-
-router.use((req, res, next) => {
-  var now = new Date();
-  var timestamp = now.toLocaleString('en-us', {
-    hour : "numeric",
-    minute : "numeric",
-    hour12 : true
-  });
-
-  console.log(`you made a ${req.method} call!`);
-  console.log(`you made the call @ ${timestamp}`);
-  //console.log(req);
-  next(); // run the next method (get, put, post, etc)
-});
-
-/* GET home page. */
-router.get('/:id', (req, res) => {
-  console.log(req.params.id);
-  console.log('hit an api route with params');
-
-  connect.query(`SELECT * FROM mainmodel WHERE model="${req.params.id}"`, (err, result) => {
-    if (err) {
-      throw err; console.log(err);
-    } else {
-      console.log(result);
-
-      res.json({carData: result});
-    }
-  });
-});
-
-router.delete('/:id', (req, res) => {
-  console.log('hit the delete route');
-
-  connect.query(`DELETE FROM mainmodel WHERE model="${req.params.id}"`, (err, result) => {
-    if (err) {
-      throw err;
-    } else {
-      res.json(result);
-    }
-  });
-});
-
-router.post('/', (req, res) => {
-  console.log(`hit the post route`);
-
-  connect.query(`INSERT into mainmodel (id, model, modelName, pricing, modelDetails, imgPath) VALUES (NULL, "${req.body.model}", "${req.body.modelName}", "${req.body.pricing}", "${req.body.modelDetails}",  "${req.body.imgPath}");`, (err, data) => {
-    if (err) {
-      throw(err);
-    } else {
-      res.json(data);
-    }
-  })
-});
-
-module.exports = router;
+// router.use(bodyParser.urlencoded({extended : false}));
+// router.use(bodyParser.json());
+//
+// router.post('/', function(req, res) {
+//   console.log('post a review');
+//   connect.query(`INSERT INTO tbl_comments (comments_id, comments_auth, comments_copy, comments_date, comments_movie, comments_rating) VALUES (NULL, NULL, "${req.body.comment}", CURRENT_TIMESTAMP(), "${req.body.id}", "${req.body.stars}")`, (error, data)=>{
+//     if (error){
+//       console.log(error);
+//     }else{
+//       res.json(data);
+//     }
+//   });
+// });
+//
+// module.exports = router;

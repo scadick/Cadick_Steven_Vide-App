@@ -1,21 +1,43 @@
-<a href="/"><img src="images/roku.svg" alt="Roku Logo" class="logo"></a>
+<section class="greetings">
+<div class="media">
+  <img src="images/movie.jpg" alt="couple watching a movie" class="mediaTabs">
+  <h2 class="mediaHeads">Movies</h2>
+</div>
+<div class="media">
+  <img src="images/tv.jpg" alt="couple watching a movie" class="mediaTabs">
+  <h2 class="mediaHeads">Television</h2>
+</div>
+<div class="media">
+<img src="images/music.jpg" alt="couple watching a movie" class="mediaTabs">
+<h2 class="mediaHeads">Music</h2>
+</div>
+</section>
 
+<section id="app">
+    <div class="movie-wrapper">
+      <aside>
+        <h4 class="movie-title">{{ defaultMovie.movies_title }}</h4>
+        <span class="movie-year">
+          {{defaultMovie.movies_year}} &nbsp;&bull;&nbsp; {{defaultMovie.movies_runtime}}
+        </span>
+        <i class="movie-genre">{{defaultMovie.genre_name}}</i>
+      </aside>
+      <video autoplay controls>
+        <source src="video/{{ defaultMovie.movies_trailer }}">
+      </video>
+    </div>
 
-<h1>{{ message }}</h1>
-
-<ul>
-  {{#each filmData}}
-
-    <li>
-      <h1>{{ video_name }}</h1>
-      <video controls autoplay>
-            <source src="/videos/{{ video_name }}.mp4" type="videos/mp4">
-              <!--should load in the fallback sources here-->
-          </video>
-      <img class="covers" src="/images/{{ video_name }}.jpg" alt="Cover" />
-      <p class="vidDescription">{{ video_description }}</p>
-    </li>
-  {{/each}}
-</ul>
-
-<a href="/"><img src="images/footer-logo.png" alt="Footer Logo" class="footerlogo"></a>
+    <!-- Load in all of the thumbnails for each genre -->
+    <section class="genre-lists" v-for="genre in genres">
+      <div v-if="genre.movies.length > 0">
+        <div class="genre-item">
+          <h6 class="genre-name">${genre.name}</h6>
+          <div class="movie-list" v-for="movie in genre.movies">
+            <a :href="'/movies/' + movie.movies_id + '/' + movie.movies_trailer">
+              <img class="movie-thumb" :src="'/images/' + movie.movies_cover" :alt="movie.movies_title">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+</section>

@@ -1,0 +1,46 @@
+<section class="greetings">
+<div class="media">
+  <img src="images/movie.jpg" alt="couple watching a movie" class="mediaTabs">
+  <h2 class="mediaHeads">Movies</h2>
+</div>
+<div class="media">
+  <img src="images/tv.jpg" alt="couple watching a movie" class="mediaTabs">
+  <h2 class="mediaHeads">Television</h2>
+</div>
+<div class="media">
+<img src="images/music.jpg" alt="couple watching a movie" class="mediaTabs">
+<h2 class="mediaHeads">Music</h2>
+</div>
+</section>
+
+<section id="video">
+  <a href="/" class="back-button">
+    <i class="far fa-arrow-alt-circle-left"></i>
+  </a>
+  <video autoplay>
+    <source src="/video/{{ moviesrc }}" type="video/mp4">
+  </video>
+  <span> <p>{{ movies_storyline }}</p> </span>
+
+  <!-- Reviews -->
+  <article class="comments" v-if="reviews.length > 0">
+    <div v-for="review in reviews">
+      <!--temporary vue comment-->
+      <review-stars :value="review.comments_rating" :disabled="true"></review-stars>
+      <!---->
+      <i class="post-date">${review.comments_date}</i>
+
+      <p>${review.comments_copy}</p>
+    </div>
+  </article>
+
+  <aside class="add-comment" ::class="{ floatRight : reviews.length > 0 }">
+    <h4 class="reviw-heading">Add a Review</h4>
+    <span class="hidden movId">{{movie}}</span>
+    <review-stars :value="numStars" :disabled="false"></review-stars>
+    <input type="range" name="myRange" id="myRange" min="0" max="5" step="1" v-model="numStars">
+    <label for="myRange">${numStars} - Star Review</label>
+    <textarea name="review" id="review" placeholder="What did you think?" v-model="review"></textarea>
+    <input type="submit" value="Submit Your Review" v-on:click="addReview">
+  </aside>
+</section>
