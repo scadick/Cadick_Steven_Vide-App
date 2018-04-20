@@ -1,17 +1,3 @@
-<section class="greetings">
-<div class="media">
-  <img src="images/movie.jpg" alt="couple watching a movie" class="mediaTabs">
-  <h2 class="mediaHeads">Movies</h2>
-</div>
-<div class="media">
-  <img src="images/tv.jpg" alt="couple watching a movie" class="mediaTabs">
-  <h2 class="mediaHeads">Television</h2>
-</div>
-<div class="media">
-<img src="images/music.jpg" alt="couple watching a movie" class="mediaTabs">
-<h2 class="mediaHeads">Music</h2>
-</div>
-</section>
 
 <section id="video">
   <a href="/" class="back-button">
@@ -20,7 +6,7 @@
   <video autoplay>
     <source src="/video/{{ moviesrc }}" type="video/mp4">
   </video>
-  <span> <p>{{ movies_storyline }}</p> </span>
+  <p>{{ moviesrc.movies_storyline }}</p>
 
   <!-- Reviews -->
   <article class="comments" v-if="reviews.length > 0">
