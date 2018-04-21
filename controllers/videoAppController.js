@@ -85,7 +85,7 @@ exports.get_one_movie = (req, res) => {
 exports.post_new_review = (req, res) => {
     console.log('hit post review route')
 
-        let query =  `INSERT INTO tbl_comments (comments_id, comments_auth, comments_copy, comments_date, comments_movie, comments_rating) VALUES (NULL, NULL, "${req.body.comment}", CURRENT_TIMESTAMP(), "${req.body.id}", "${req.body.stars}")`
+        let query =  `INSERT INTO tbl_comments (comments_id, comments_auth, comments_copy, comments_date, comments_movie, comments_rating) VALUES (NULL, "${req.body.comment}", CURRENT_TIMESTAMP(), "${req.body.id}", 'no', "${req.body.stars}")`
 
         connect.query(query, (err, rows)=>{
             if (err) {
